@@ -67,7 +67,7 @@ static const struct usb_device_id id_table[] = {
 	{DEVICE_G1K(0x05c6, 0x9202)},	/* Generic Gobi Modem device */
 	{DEVICE_G1K(0x05c6, 0x9203)},	/* Generic Gobi Modem device */
 	{DEVICE_G1K(0x05c6, 0x9222)},	/* Generic Gobi Modem device */
-	{DEVICE_G1K(0x05c6, 0x9008)},	/* Generic Gobi QDL device */
+//	{DEVICE_G1K(0x05c6, 0x9008)},	/* Generic Gobi QDL device */
 	{DEVICE_G1K(0x05c6, 0x9009)},	/* Generic Gobi Modem device */
 	{DEVICE_G1K(0x05c6, 0x9201)},	/* Generic Gobi QDL device */
 	{DEVICE_G1K(0x05c6, 0x9221)},	/* Generic Gobi QDL device */
@@ -92,7 +92,7 @@ static const struct usb_device_id id_table[] = {
 	{USB_DEVICE(0x03f0, 0x241d)},	/* HP Gobi 2000 QDL device (VP412) */
 	{USB_DEVICE(0x03f0, 0x251d)},	/* HP Gobi 2000 Modem device (VP412) */
 	{USB_DEVICE(0x05c6, 0x9214)},	/* Acer Gobi 2000 QDL device (VP413) */
-	{USB_DEVICE(0x05c6, 0x9215)},	/* Acer Gobi 2000 Modem device (VP413) */
+//	{USB_DEVICE(0x05c6, 0x9215)},	/* Acer Gobi 2000 Modem device (VP413) */
 	{USB_DEVICE(0x05c6, 0x9264)},	/* Asus Gobi 2000 QDL device (VR305) */
 	{USB_DEVICE(0x05c6, 0x9265)},	/* Asus Gobi 2000 Modem device (VR305) */
 	{USB_DEVICE(0x05c6, 0x9234)},	/* Top Global Gobi 2000 QDL device (VR306) */
