@@ -607,4 +607,6 @@ config USB_NET_CH9200
 	  To compile this driver as a module, choose M here: the
 	  module will be called ch9200.
 
+source "drivers/net/usb/GobiNet/Kconfig"
+
 endif # USB_NET_DRIVERS

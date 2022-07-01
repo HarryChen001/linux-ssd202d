@@ -1,5 +1,5 @@
 config USB_NET_GOBINET
-    tristate "support qca9x07"
+    tristate "support quectel 4g&5G module"
     help
-        it is a driver to support qca9x07
+        it is a driver to support quectel 4g&5g module
 
