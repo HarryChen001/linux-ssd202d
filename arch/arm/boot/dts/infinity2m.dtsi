@@ -261,6 +261,7 @@
             status = "ok";
             mdio-bus@emac0 {
                 phy0: ethernet-phy@0 {
+		    reg = <0>;
                     phy-mode = "mii";
                 };
             };
@@ -558,8 +559,8 @@
             compatible = "sstar,infinity-pwm";
             reg = <0x1F003400 0x600>;
             clocks = <&CLK_xtali_12m>;
-            npwm = <4>;
-            pad-ctrl = <PAD_UNKNOWN PAD_UNKNOWN PAD_UNKNOWN PAD_UNKNOWN>;
+            npwm = <1>;
+            pad-ctrl = <PAD_GPIO4 PAD_UNKNOWN PAD_UNKNOWN PAD_UNKNOWN>;
             status = "disabled";  // no available pads
         };
 
