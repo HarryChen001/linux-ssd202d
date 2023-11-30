@@ -716,6 +716,7 @@ static const struct usb_device_id option_ids[] = {
 	{ USB_DEVICE(0x2C7C, 0x6026) }, /* Quectel EC200 */
 	{ USB_DEVICE(0x2C7C, 0x6120) }, /* Quectel UC200 */
 	{ USB_DEVICE(0x2C7C, 0x6000) }, /* Quectel EC200/UC200 */
+	{ USB_DEVICE(0x2C7C, 0x0903) }, /* Quectel EC200/UC200 */
 	{ .match_flags = USB_DEVICE_ID_MATCH_VENDOR, .idVendor = 0x2C7C }, /* Match All Quectel Modules */
 #endif
 	{ USB_DEVICE(OPTION_VENDOR_ID, OPTION_PRODUCT_COLT) },
