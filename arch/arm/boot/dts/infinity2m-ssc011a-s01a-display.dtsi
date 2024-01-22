@@ -121,7 +121,7 @@
 				digmic-padmux = <2>;
 				i2s-padmux = <2>;
 				keep-i2s-clk = <0>;
-				status = "disabled";
+				status = "ok";
 			};
 
 			pwm {

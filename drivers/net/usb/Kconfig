@@ -608,5 +608,5 @@ config USB_NET_CH9200
 	  module will be called ch9200.
 
 source "drivers/net/usb/GobiNet/Kconfig"
-
+source "drivers/net/usb/ssw101b/Kconfig"
 endif # USB_NET_DRIVERS

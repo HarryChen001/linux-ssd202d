@@ -381,7 +381,7 @@
 
         sound {
             compatible = "sstar,audio";
-//            reg = <0x1F000000 0x1000000>;
+            reg = <0x1F000000 0x1000000>;
             interrupts=<GIC_SPI INT_IRQ_BACH IRQ_TYPE_LEVEL_HIGH>;
             playback-volume-level=<64>;    //0~94
             capture-volume-level=<64>;
@@ -411,7 +411,7 @@
             clk-driving = <0>;
             cmd-driving = <0>;
             data-driving = <0>;
-            status = "disabled";
+            status = "ok";
         };
 
         sdmmc {
@@ -443,7 +443,7 @@
             clocks = <&CLK_sdio>,<&CLK_sdio>,<&CLK_sdio>,
                      <&CLK_sdio>,<&CLK_sdio>,<&CLK_sdio>,
                      <&CLK_sdio>,<&CLK_sdio>,<&CLK_sdio>;
-            status = "ok";
+            status = "disabled";
         };
 
         aesdma {
@@ -494,6 +494,7 @@
             reg = <0x1F345000  0x100>, <0x1F345100  0x100>, <0x1F2A4A00 0x200>;
             interrupts=<GIC_SPI INT_IRQ_SATA IRQ_TYPE_LEVEL_HIGH>;
             clocks = <&CLK_sata_axi>,<&CLK_sata_pm>,<&CLK_sata_phy_108>,<&CLK_sata_phy_432>;
+		status = "disabled";
         };
 
 
@@ -540,7 +541,7 @@
             compatible = "sstar,infinity-sar";
             reg = <0x1F002800 0x200>;
             clocks = <&CLK_sar>;
-            status = "ok";
+            status = "disabled";
         };
 
         ircut {
@@ -548,7 +549,7 @@
             ircut-gpio-num = <PAD_PM_IRIN>;///PM_GPIO_IRIN
             interrupt-parent = <&ms_pm_intc>;
             interrupts = <INT_PMSLEEP_IRIN>;
-            status = "ok";
+            status = "disabled";
         };
 
         ir: ir@1F007A00 {
@@ -563,8 +564,8 @@
             compatible = "sstar,infinity-pwm";
             reg = <0x1F003400 0x600>;
             clocks = <&CLK_xtali_12m>;
-            npwm = <1>;
-            pad-ctrl = <PAD_GPIO4 PAD_UNKNOWN PAD_UNKNOWN PAD_UNKNOWN>;
+            npwm = <2>;
+            pad-ctrl = <PAD_GPIO4 PAD_GPIO5 PAD_UNKNOWN PAD_UNKNOWN>;
             status = "disabled";  // no available pads
         };
 

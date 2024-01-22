@@ -40,3 +40,4 @@ obj-$(CONFIG_USB_NET_QMI_WWAN)	+= qmi_wwan.o
 obj-$(CONFIG_USB_NET_CDC_MBIM)	+= cdc_mbim.o
 obj-$(CONFIG_USB_NET_CH9200)	+= ch9200.o
 obj-$(CONFIG_USB_NET_GOBINET)	+= GobiNet/
+obj-$(CONFIG_SSTAR_WIRELESS) += ssw101b/
