@@ -14,10 +14,9 @@
 * GNU General Public License version 2 for more details.
 *
 */
-
+#include <dt-bindings/gpio/gpio.h>
 / {
 	soc {
-
 		cpufreq {
 			vid-num = /bits/ 8 <2>;
 			vid-gpios = /bits/ 8 <PAD_FUART_CTS PAD_FUART_RTS>;
@@ -51,9 +50,14 @@
 			 */
 			i2c-speed = <3>;
 			i2c-en-dma = <0>;  // 0: disable; 1: enable;
+			status = "disabled";
+		};
+		gpio:gpio{
+			compatible = "sstar,gpio";
+			#gpio-cells = <2>;
+			gpio-controller;
 			status = "okay";
 		};
-
 		i2c1@1{
 			compatible = "sstar,i2c";
 			reg = <0x1F223200 0x200>,<0x1F203c00 0x200>,<0x1F207000 0x200>;
@@ -96,51 +100,56 @@
 				   interrupt-names = "chipone_int";
 				 */
 			};
+			tsc2007@48 {
+				compatible = "ti,tsc2007";
+				reg = <0x48>;
+				interrupt-parent = <&gpio>;
+				interrupts-extended = <&ms_gpi_intc INT_GPI_FIQ_GPIO13 IRQ_TYPE_EDGE_FALLING>;
+				gpios = <&gpio PAD_GPIO13 GPIO_ACTIVE_LOW>;
+				ti,x-plate-ohms = <180>;
 			};
-
-			gpioi2c {
-				compatible = "sstar,infinity-gpioi2c";
-				scl-gpio = <PAD_GPIO11>;
-				sda-gpio = <PAD_GPIO12>;
-				status = "disabled";
-			};
-			sound {
-				compatible = "sstar,audio";
-				//            reg = <0x1F000000 0x1000000>;
-				interrupts=<GIC_SPI INT_IRQ_BACH IRQ_TYPE_LEVEL_HIGH>;
-				playback-volume-level=<64>;    //0~94
-				capture-volume-level=<64>;
-				// micin-pregain-level=<1>;    //0~3
-				micin-pregain-level=<0>;    //0~3
-				micin-gain-level=<3>;    //0~7
-				linein-gain-level=<2>;  //0~7
-				amp-gpio = <PAD_GPIO12 1 PAD_UNKNOWN 1>;
-				clocks = <&CLK_upll_384m>;
-				// playback-dma-buffer=<98304>; //512(ms)*48(kHz)*2(ch)*2(16bits)
-				// capture-dma-buffer=<122880>; //640(ms)*48(kHz)*2(ch)*2(16bits)
-				digmic-padmux = <2>;
-				i2s-padmux = <2>;
-				keep-i2s-clk = <0>;
-				status = "ok";
-			};
-
-			pwm {
-				compatible = "sstar,infinity-pwm";
-				reg = <0x1F003400 0x600>;
-				clocks = <&CLK_xtali_12m>;
-				npwm = <2>;
-				pad-ctrl = <PAD_GPIO4 PAD_GPIO5>;
-				status = "ok";  // no available pads
-			};
-
-			disp: disp {
-				      compatible = "sstar,disp";
-				      status = "ok";
-				      interrupts = <GIC_SPI INT_IRQ_DISP0 IRQ_TYPE_LEVEL_HIGH>, <GIC_SPI INT_IRQ_DISP_1 IRQ_TYPE_LEVEL_HIGH>, <GIC_SPI INT_IRQ_DISP_3 IRQ_TYPE_LEVEL_HIGH>;
-				      clocks = <&CLK_mop>, <&CLK_disp_432>, <&CLK_disp_216>;
-				      clock-names = "CLK_mop", "CLK_disp_432", "CLK_disp_216";
-				      //Reg = <0x1F224000 0x200>;
-			      };
 		};
 
+		gpioi2c {
+			compatible = "sstar,infinity-gpioi2c";
+			scl-gpio = <PAD_GPIO11>;
+			sda-gpio = <PAD_GPIO12>;
+			status = "disabled";
+		};
+		sound {
+			compatible = "sstar,audio";
+			//            reg = <0x1F000000 0x1000000>;
+			interrupts=<GIC_SPI INT_IRQ_BACH IRQ_TYPE_LEVEL_HIGH>;
+			playback-volume-level=<64>;    //0~94
+			capture-volume-level=<64>;
+			// micin-pregain-level=<1>;    //0~3
+			micin-pregain-level=<0>;    //0~3
+			micin-gain-level=<3>;    //0~7
+			linein-gain-level=<2>;  //0~7
+			amp-gpio = <PAD_GPIO12 1 PAD_UNKNOWN 1>;
+			clocks = <&CLK_upll_384m>;
+			// playback-dma-buffer=<98304>; //512(ms)*48(kHz)*2(ch)*2(16bits)
+			// capture-dma-buffer=<122880>; //640(ms)*48(kHz)*2(ch)*2(16bits)
+			digmic-padmux = <2>;
+			i2s-padmux = <2>;
+			keep-i2s-clk = <0>;
+			status = "ok";
+		};
+		pwm {
+			compatible = "sstar,infinity-pwm";
+			reg = <0x1F003400 0x600>;
+			clocks = <&CLK_xtali_12m>;
+			npwm = <2>;
+			pad-ctrl = <PAD_GPIO4 PAD_GPIO5>;
+			status = "ok";  // no available pads
+		};
+		disp: disp {
+		      compatible = "sstar,disp";
+		      status = "ok";
+		      interrupts = <GIC_SPI INT_IRQ_DISP0 IRQ_TYPE_LEVEL_HIGH>, <GIC_SPI INT_IRQ_DISP_1 IRQ_TYPE_LEVEL_HIGH>, <GIC_SPI INT_IRQ_DISP_3 IRQ_TYPE_LEVEL_HIGH>;
+		      clocks = <&CLK_mop>, <&CLK_disp_432>, <&CLK_disp_216>;
+		      clock-names = "CLK_mop", "CLK_disp_432", "CLK_disp_216";
+		      //Reg = <0x1F224000 0x200>;
+	      };
 	};
+};

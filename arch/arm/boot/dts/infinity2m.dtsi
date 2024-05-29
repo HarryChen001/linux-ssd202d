@@ -120,7 +120,8 @@
             #interrupt-cells = <1>;
             interrupt-parent=<&ms_main_intc>;
             interrupt-controller;
-            interrupts = <GIC_SPI INT_IRQ_GPI IRQ_TYPE_LEVEL_HIGH>;
+            interrupts = <GIC_SPI INT_IRQ_GPI IRQ_TYPE_LEVEL_HIGH>,
+			 <GIC_SPI INT_IRQ_GPI IRQ_TYPE_EDGE_FALLING>;
         };
 
         arch_timer {
